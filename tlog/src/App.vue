@@ -1,5 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" v-if="currentRoute === '/login'">
+    <router-view class="pt-5"/>
+  </div>
+  <div id="app" v-else>
     <top-nav class="bg-warning"></top-nav>
     <router-view class="pt-5" style="width:70%"/>
   </div>
@@ -12,6 +15,11 @@ export default {
     name: 'App',
     components: {
         TopNav
+    },
+    data () {
+        return {
+            currentRoute: window.location.pathname
+        }
     }
 }
 </script>
