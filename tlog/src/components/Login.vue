@@ -17,7 +17,7 @@
 
     <!-- Join -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">회원가입</a>
+      <a class="underlineHover" href="/signup">회원가입</a>
     </div>
 
   </div>
