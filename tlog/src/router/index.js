@@ -1,13 +1,14 @@
 import Vue from 'vue'
-import Router from 'vue-router'
 import NewsFeed from '@/components/NewsFeed'
+import Login from '@/components/Login'
+import VueRouter from 'vue-router'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
-    routes: [{
-        path: '/',
-        name: 'NewsFeed',
-        component: NewsFeed
-    }]
+export default new VueRouter({
+    mode: 'history',
+    routes: [
+        { path: '/newsfeed', component: NewsFeed },
+        { path: '/login', component: Login }
+    ]
 })
