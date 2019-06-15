@@ -6,10 +6,10 @@
   </a>
   <ul class="nav justify-content-end">
     <li class="nav-item">
-        <a class="nav-link active" href="/">뉴스피드</a>
+        <a class="nav-link active" href="/newsfeed">뉴스피드</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">마이페이지</a>
+        <a class="nav-link" href="/mypage" tabindex="-1" aria-disabled="true">마이페이지</a>
     </li>
 </ul>
 </nav>
