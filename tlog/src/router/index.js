@@ -5,11 +5,9 @@ import NewsFeed from '@/components/NewsFeed'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'NewsFeed',
-      component: NewsFeed
-    }
-  ]
+    routes: [{
+        path: '/',
+        name: 'NewsFeed',
+        component: NewsFeed
+    }]
 })
