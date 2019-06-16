@@ -1,5 +1,5 @@
 <template>
-<div class="clearfix mx-auto">
+<div class="clearfix">
     <time-line class="float-left" style="width: 70%"></time-line>
     <news-feed-nav class="float-left" style="width: 30%"></news-feed-nav>
 </div>

@@ -1,7 +1,7 @@
 <template>
 <div class="container">
     <div>
-        <div class="card mt-3">
+        <a href="/tlog" class="card mt-3 list-group-item-action">
             <div class="card-body">
                 <h5 class="card-title">주말동안 짧은 여행</h5>
                 <p class="card-text">
@@ -14,10 +14,10 @@
                     src="http://www.5viral.com/wp-content/uploads/2016/02/round-window-in-airplane.jpg"
                     class="rounded border"
                     alt="..."
-                    style="width:100%; height:200px">
+                    style="width:100%; height:300px">
             </div>
-        </div>
-        <div class="card mt-3">
+        </a>
+        <a href="/tlog" class="card mt-3 list-group-item-action">
             <div class="card-body">
                 <h5 class="card-title">주말동안 짧은 여행</h5>
                 <p class="card-text">
@@ -30,9 +30,9 @@
                     src="http://www.5viral.com/wp-content/uploads/2016/02/round-window-in-airplane.jpg"
                     class="rounded border"
                     alt="..."
-                    style="width:100%; height:200px">
+                    style="width:100%; height:300px">
             </div>
-        </div>
+        </a>
     </div>
 </div>
 </template>

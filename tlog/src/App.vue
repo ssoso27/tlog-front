@@ -4,7 +4,7 @@
   </div>
   <div id="app" v-else>
     <top-nav class="bg-warning"></top-nav>
-    <router-view class="pt-5" style="width:70%"/>
+    <router-view class="pt-5 mx-auto" style="width:70%"/>
   </div>
 </template>
 

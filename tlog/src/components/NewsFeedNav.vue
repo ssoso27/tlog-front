@@ -3,10 +3,12 @@
         <div class="card">
             <div class="card-body">
                 <div class="clearfix mb-2">
-                    <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+                    <a href="/mypage">
+                        <img src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
                         alt=""
                         class="rounded-circle border float-left mr-2"
                         style="width:50px; height:50px">
+                    </a>
                     <p class="card-title" style="margin-bottom: 0px">김여행</p>
                     <p class="card-text">
                         <small class="text-muted">언제나 즐거운 여행</small>

@@ -1,7 +1,7 @@
 <template>
 <div class="container">
     <div>
-        <div class="card">
+        <a href="/tlog" class="card list-group-item-action">
             <div class="card-body">
                 <h5 class="card-title">주말동안 짧은 여행</h5>
                 <p class="card-text">
@@ -34,9 +34,9 @@
                     alt="..."
                     style="width:200px; height:200px">
             </div>
-        </div>
+        </a>
 
-        <div class="card">
+        <a href="/tlog" class="card list-group-item-action">
             <div class="card-body">
                 <h5 class="card-title">주말동안 짧은 여행</h5>
                 <p class="card-text">
@@ -69,7 +69,7 @@
                     alt="..."
                     style="width:200px; height:200px">
             </div>
-        </div>
+        </a>
     </div>
 </div>
 </template>

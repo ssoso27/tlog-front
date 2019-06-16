@@ -1,5 +1,5 @@
 <template>
-<div class="mx-auto">
+<div>
   <profile style="height: 40%"></profile>
   <my-logs></my-logs>
 </div>
