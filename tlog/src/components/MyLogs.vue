@@ -14,7 +14,7 @@
                     src="http://www.5viral.com/wp-content/uploads/2016/02/round-window-in-airplane.jpg"
                     class="rounded border"
                     alt="..."
-                    style="width:100%; height:200px">
+                    style="width:100%; height:300px">
             </div>
         </a>
         <a href="/tlog" class="card mt-3 list-group-item-action">
@@ -30,7 +30,7 @@
                     src="http://www.5viral.com/wp-content/uploads/2016/02/round-window-in-airplane.jpg"
                     class="rounded border"
                     alt="..."
-                    style="width:100%; height:200px">
+                    style="width:100%; height:300px">
             </div>
         </a>
     </div>
