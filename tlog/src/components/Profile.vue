@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <div class="row">
-      <div class="profile-header-container">
+      <div class="profile-header-container rounded">
         <img class="rounded-circle" src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80">
         <p class="h4">김여행 <small class="text-muted">@HelloMan</small></p>
         <p>여행 다니기를 좋아하는 김여행입니다.</p>
