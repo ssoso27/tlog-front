@@ -1,5 +1,5 @@
 <template>
-  <div class="row col-12 border rounded" style="padding: 20px">
+  <div class="row col-12 border rounded mt-2" style="padding: 20px">
       <div class="row col-12">
           <i class="fas fa-check-circle mr-2" style="font-size: 45px"></i>
           <p>
