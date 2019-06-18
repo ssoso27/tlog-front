@@ -7,9 +7,9 @@
               <span>12:00~</span>
           </p> -->
         <label for="name" class="lab">장소명</label>
-        <input v-model="name" type="text" placeholder="여행장소명" class="name col-6"/>
+        <input v-model="place.name" v-on:input="$emit('input', place)" type="text" placeholder="여행장소명" class="name col-6"/>
       </div>
-      <component v-for="(input_memory, idx) in input_memories" :is="input_memory" v-bind:key="input_memory.id" v-model="memories[idx]" :seq="idx"></component>
+      <component v-for="(input_memory, idx) in input_memories" :is="input_memory" v-bind:key="input_memory.id" v-model="place.memories[idx]" :seq="idx"></component>
       <div class="row">
         <button type="button" class="btn btn-info mt-2" v-on:click="addMemory">이 장소에서의 추억 추가</button>
       </div>
@@ -20,20 +20,23 @@
 import InputMemory from './InputMemory.vue'
 
 export default {
+    props: ['seq'],
     name: 'InputPlace',
     components: {
         'input_memory': InputMemory
     },
     data () {
         return {
-            name: '',
-            input_memories: [],
-            memories: []
+            place: {
+                'seq': this.seq,
+                'name': '',
+                'memories': []
+            },
+            input_memories: []
         }
     },
     methods: {
         addMemory: function (event) {
-            console.log(this.memories)
             this.input_memories.push('input_memory')
         }
     }

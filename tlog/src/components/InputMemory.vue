@@ -21,7 +21,7 @@
   </div>
   <div class="row col-12">
     <label for="content" class="lab">추억 내용</label>
-    <textarea v-model="memory.content" v-on:input="updateValue()" placeholder="이 장소에서의 추억을 기록해보세요." class="form-control" rows="3"></textarea>
+    <textarea v-model="memory.content" v-on:input="$emit('input', memory)" placeholder="이 장소에서의 추억을 기록해보세요." class="form-control" rows="3"></textarea>
   </div>
 </div>
 </template>
@@ -36,11 +36,6 @@ export default {
                 'seq': this.seq,
                 'content': ''
             }
-        }
-    },
-    methods: {
-        updateValue () {
-            this.$emit('input', this.memory)            
         }
     }
 }
@@ -60,4 +55,3 @@ export default {
     top: 0;
 }
 </style>
-

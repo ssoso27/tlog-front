@@ -5,7 +5,7 @@
             <label for="date" class="lab">날짜</label>
             <datepicker v-model="date" :format="format" placeholder="select date"></datepicker>
         </div>
-        <component v-for="(input_place, idx) in input_places" :is="input_place" v-bind:key="input_place.id"></component>
+        <component v-for="(input_place, idx) in input_places" :is="input_place" v-bind:key="input_place.id" v-model="places[idx]" :seq="idx"></component>
         <div class="row">
             <button type="button" class="btn btn-primary mt-2" v-on:click="addPlace">다른 장소 추가</button>
         </div>
@@ -27,12 +27,14 @@ export default {
         return {
             format: 'MM월 dd일',
             date: new Date(),
-            input_places: []
+            input_places: [],
+            places: []
         }
     },
     methods: {
         addPlace: function (event) {
             this.input_places.push('input_place')
+            console.log(this.places)
         },
         submit: function () {
             alert('submit')
