@@ -8,7 +8,7 @@ import HeaderWrite from './HeaderWrite.vue'
 export default {
     name: 'TLogWrite',
     components: {
-        HeaderWrite,
+        HeaderWrite
     }
 }
 </script>

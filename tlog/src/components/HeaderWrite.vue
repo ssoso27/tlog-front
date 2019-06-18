@@ -17,9 +17,9 @@
             </p>
           </div>
           <div class="row mt-4 pl-4">
-            <label for="hastag1" class="lab">해시태그1</label>
-            <input type="text" placeholder="#hastag" class="hashtag col-1"/>
-            <a class="btn btn-light">+</a>
+            <label for="hashtag" class="lab">해시태그</label>
+            <component v-for="hashtag in hashtags" :is="hashtag" v-bind:key="hashtag.id" v-bind:count="count_hashtag"></component>
+            <a class="btn btn-light" v-on:click="addHashtag">+</a>
           </div>
           <div class="row justify-content-end pr-4">
             <label for="image" class="lab">헤더이미지</label>
@@ -34,8 +34,36 @@
 </template>
 
 <script>
+var ElementHashtag = {
+    props: ['count'],
+    template: `<input :id="id" type="text" placeholder="#hashtag" class="hashtag col-1"/>`,
+    data () {
+        return {
+            id: null
+        }
+    },
+    mounted () {
+        this.id = 'hashtag' + this.count
+    }
+}
+
 export default {
-    name: 'HeaderWrite'
+    name: 'HeaderWrite',
+    components: {
+        'element_hashtag': ElementHashtag
+    },
+    data () {
+        return {
+            hashtags: [],
+            count_hashtag: 0
+        }
+    },
+    methods: {
+        addHashtag: function (event) {
+            this.count_hashtag = this.count_hashtag + 1
+            this.hashtags.push('element_hashtag')
+        }
+    }
 }
 </script>
 
@@ -61,7 +89,7 @@ export default {
 
 .hashtag {
     text-align: start;
-    font-size: 14px;
+    font-size: 13px;
     padding: 0;
 }
 /*
