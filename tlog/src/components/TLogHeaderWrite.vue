@@ -7,14 +7,10 @@
             <label for="tite" class="lab">제목</label>
             <input type="text" placeholder="여행기록명" class="title col-6"/>
           </div>
-          <div class="row justify-content-end mt-4">
-            <p>
-              <label for="startDate" class="lab">시작날짜</label>
-              <input type="text" placeholder="0000.00.00" class="col-4">
-              <span class="text-white">~</span>
-              <label for="endDate" class="lab">끝난날짜</label>
-              <input type="text" placeholder="0000.00.00" class="col-4">
-            </p>
+          <div class="row justify-content-end mt-4 pr-4">
+            <datepicker v-model="start_date" :format="format" placeholder="select date"></datepicker>
+            <span class="text">~</span>
+            <datepicker v-model="end_date" :format="format" placeholder="select date"></datepicker>
           </div>
           <div class="row mt-4 pl-4">
             <label for="hashtag" class="lab">해시태그</label>
@@ -34,6 +30,8 @@
 </template>
 
 <script>
+import Datepicker from 'vuejs-datepicker'
+
 var ElementHashtag = {
     props: ['count'],
     template: `<input :id="id" type="text" placeholder="#hashtag" class="hashtag col-1"/>`,
@@ -50,12 +48,16 @@ var ElementHashtag = {
 export default {
     name: 'HeaderWrite',
     components: {
-        'element_hashtag': ElementHashtag
+        'element_hashtag': ElementHashtag,
+        Datepicker
     },
     data () {
         return {
             hashtags: [],
-            count_hashtag: 0
+            count_hashtag: 0,
+            format: "yyyy-MM-dd",
+            start_date: new Date(),
+            end_date: new Date()
         }
     },
     methods: {
@@ -71,6 +73,17 @@ export default {
 </script>
 
 <style>
+
+.vdp-datepicker input{
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    z-index: 100000 !important;
+}
+
+.cov-date-body{
+  z-index: 100;
+}
 
 .lab{
   display: none;
@@ -100,7 +113,7 @@ export default {
     text-align: end;
 } */
 
-.header > p {
+.text {
     color: white;
     margin-left: 10px;
     margin-right: 10px;
