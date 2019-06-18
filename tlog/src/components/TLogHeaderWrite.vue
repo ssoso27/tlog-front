@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form action="" style="width:100%">
+    <form style="width:100%" @submit.prevent="submit">
       <div class="header"
           style="background: url(http://www.5viral.com/wp-content/uploads/2016/02/round-window-in-airplane.jpg);">
           <div class="row justify-content-center">
@@ -62,6 +62,9 @@ export default {
         addHashtag: function (event) {
             this.count_hashtag = this.count_hashtag + 1
             this.hashtags.push('element_hashtag')
+        },
+        submit: function () {
+            this.$router.push('/tlog/write/1')
         }
     }
 }
