@@ -73,7 +73,7 @@ export default {
             console.log(this.hashtags)
             console.log(this.start_date)
             console.log(this.end_date)
-            // this.$router.push('/tlog/write/1')
+            this.$router.push('/tlog/write/1')
         }
     }
 }
