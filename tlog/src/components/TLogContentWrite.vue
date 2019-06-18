@@ -6,7 +6,9 @@
             <datepicker v-model="date" :format="format" placeholder="select date"></datepicker>
         </div>
         <component v-for="(input_place, idx) in input_places" :is="input_place" v-bind:key="input_place.id"></component>
-        <button type="button" class="btn btn-primary" v-on:click="addPlace">다른 장소 추가</button>
+        <div class="row">
+            <button type="button" class="btn btn-primary mt-2" v-on:click="addPlace">다른 장소 추가</button>
+        </div>
     </form>
 </div>
 </template>
