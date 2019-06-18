@@ -6,14 +6,18 @@
           class="rounded border"
           alt="..."
           style="width:200px; height:200px"> -->
-    <div class="file-tab panel-body">
-      <label class="btn btn-secondary btn-file">
-          <span>Browse</span>
-          <!-- The file is stored here. -->
-          <input type="file" name="image-file">
-      </label>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
+      </div>
+
       <!-- <button type="button" class="btn btn-default">Remove</button> -->
-    </div>
   </div>
   <div class="row col-12">
     <label for="content" class="lab">추억 내용</label>
