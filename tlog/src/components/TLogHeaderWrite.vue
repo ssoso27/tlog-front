@@ -4,8 +4,8 @@
       <div class="header"
           style="background: url(http://www.5viral.com/wp-content/uploads/2016/02/round-window-in-airplane.jpg);">
           <div class="row justify-content-center">
-            <label for="tite" class="lab">제목</label>
-            <input type="text" placeholder="여행기록명" class="title col-6"/>
+            <label for="title" class="lab">제목</label>
+            <input v-model="title" type="text" placeholder="여행기록명" class="title col-6"/>
           </div>
           <div class="row justify-content-end mt-4 pr-4">
             <datepicker v-model="start_date" :format="format" placeholder="select date"></datepicker>
@@ -14,7 +14,7 @@
           </div>
           <div class="row mt-4 pl-4">
             <label for="hashtag" class="lab">해시태그</label>
-            <component v-for="hashtag in hashtags" :is="hashtag" v-bind:key="hashtag.id" v-bind:count="count_hashtag"></component>
+            <component v-for="(hashtag, idx) in hashtag_elements" :is="hashtag" v-bind:key="hashtag.id" v-model="hashtags[idx]"></component>
             <a class="btn btn-light" v-on:click="addHashtag">+</a>
           </div>
           <div class="row justify-content-end pr-4">
@@ -33,15 +33,16 @@
 import Datepicker from 'vuejs-datepicker'
 
 var ElementHashtag = {
-    props: ['count'],
-    template: `<input :id="id" type="text" placeholder="#hashtag" class="hashtag col-1"/>`,
-    data () {
-        return {
-            id: null
+    props: ['model'],
+    template: `<input ref="input" v-on:input="updateValue($event.target.value)" type="text" value="#" placeholder="#hashtag" class="hashtag col-1"/>`,
+    methods: {
+        updateValue: function (value) {
+            if (value.trim().slice(0, 1) !== '#') {
+                value = '#' + value
+                this.$refs.input.value = value
+            }
+            this.$emit('input', value)
         }
-    },
-    mounted () {
-        this.id = 'hashtag' + this.count
     }
 }
 
@@ -53,9 +54,11 @@ export default {
     },
     data () {
         return {
+            title: '',
+            hashtag_elements: [],
             hashtags: [],
             count_hashtag: 0,
-            format: "yyyy-MM-dd",
+            format: 'yyyy-MM-dd',
             start_date: new Date(),
             end_date: new Date()
         }
@@ -63,10 +66,14 @@ export default {
     methods: {
         addHashtag: function (event) {
             this.count_hashtag = this.count_hashtag + 1
-            this.hashtags.push('element_hashtag')
+            this.hashtag_elements.push('element_hashtag')
         },
         submit: function () {
-            this.$router.push('/tlog/write/1')
+            console.log(this.title)
+            console.log(this.hashtags)
+            console.log(this.start_date)
+            console.log(this.end_date)
+            // this.$router.push('/tlog/write/1')
         }
     }
 }
