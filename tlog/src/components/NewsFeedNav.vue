@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-outline-primary btn-block">여행기 기록</button>
+        <a href="/tlog/write" class="btn btn-outline-primary btn-block">여행기 기록</a>
     </div>
 </template>
 
