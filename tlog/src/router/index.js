@@ -19,7 +19,7 @@ export default new VueRouter({
         { path: '/mypage', component: MyPage },
         { path: '/tlog', component: TLogDetail },
         { path: '/tlog/write', component: TLogHeaderWrite },
-        { path: '/tlog/write/:id', component: TLogContentWrite }
+        { path: '/tlog/write/:id/date/:date', component: TLogContentWrite }
         // { path: '/:id', component: MyPage },
         // { path: '/tlog/:id', component: TLogDetail }
     ]

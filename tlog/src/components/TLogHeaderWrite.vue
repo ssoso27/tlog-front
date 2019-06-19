@@ -31,6 +31,7 @@
 
 <script>
 import Datepicker from 'vuejs-datepicker'
+import moment from 'moment'
 
 var ElementHashtag = {
     props: ['model'],
@@ -73,7 +74,10 @@ export default {
             console.log(this.hashtags)
             console.log(this.start_date)
             console.log(this.end_date)
-            this.$router.push('/tlog/write/1')
+            this.$router.push('/tlog/write/1/date/' + this.formattingDate(this.start_date))
+        }, 
+        formattingDate (date) {
+            return moment(this.start_date).format('YYYY-MM-DD')
         }
     }
 }
