@@ -80,18 +80,16 @@ export default {
             frm.append('accountId', 1)
             frm.append('startDate', this.formattingDate(this.start_date))
             frm.append('lastDate', this.formattingDate(this.end_date))
-            frm.append('backgroundImg', image)
-            
+            if (image !== undefined) frm.append('backgroundImg', image)
+
             this.$axios.post('/api/tlog', frm, config)
                 .then((response) => {
                     // 응답 처리
-                    alert('성공!')
-                    console.log(response)
-                    this.$router.push('tlog/write/1/date/' + this.formattingDate(this.start_date))
+                    this.$router.push('/tlog/write/' + response.data + '/date/' + this.formattingDate(this.start_date))
                 })
-                .catch(function (error) {
+                .catch(function () {
                     // 예외 처리
-                    alert('실패!')
+                    alert('여행기 작성에 실패했습니다. 다시 시도해주세요.')
                 })
         },
         formattingDate (date) {
