@@ -80,9 +80,10 @@ export default {
 
             frm.append('title', this.title)
             frm.append('accountId', 1)
+            frm.append('hashtags', this.hashtags)
             frm.append('startDate', this.formattingDate(this.start_date))
             frm.append('lastDate', this.formattingDate(this.end_date))
-            if (this.image !== undefined) frm.append('backgroundImg', this.image)
+            if (this.image !== '') frm.append('backgroundImg', this.image)
 
             this.$axios.post('/api/tlog', frm, config)
                 .then((response) => {
@@ -95,7 +96,7 @@ export default {
                 })
         },
         formattingDate (date) {
-            return moment(this.start_date).format('YYYY-MM-DD')
+            return moment(date).format('YYYY-MM-DD')
         },
         changeImage (event) {
             var input = event.target
