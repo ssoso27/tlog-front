@@ -19,7 +19,7 @@
           </div>
           <div class="row justify-content-end pr-4">
             <label for="image" class="lab">헤더이미지</label>
-            <input type="file" name="header img" id="" class="col-1" style="font-size:14px">
+            <input type="file" name="header img" ref="header_img" class="col-1" style="font-size:14px">
           </div>
       </div>
       <div class="row">
@@ -70,12 +70,30 @@ export default {
             this.hashtag_elements.push('element_hashtag')
         },
         submit: function () {
-            console.log(this.title)
-            console.log(this.hashtags)
-            console.log(this.start_date)
-            console.log(this.end_date)
-            this.$router.push('/tlog/write/1/date/' + this.formattingDate(this.start_date))
-        }, 
+            var config = {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            }
+            var frm = new FormData()
+            var image = this.$refs.header_img.files[0]
+
+            frm.append('title', this.title)
+            frm.append('accountId', 1)
+            frm.append('startDate', this.formattingDate(this.start_date))
+            frm.append('lastDate', this.formattingDate(this.end_date))
+            frm.append('backgroundImg', image)
+            
+            this.$axios.post('/api/tlog', frm, config)
+                .then((response) => {
+                    // 응답 처리
+                    alert('성공!')
+                    console.log(response)
+                    this.$router.push('tlog/write/1/date/' + this.formattingDate(this.start_date))
+                })
+                .catch(function (error) {
+                    // 예외 처리
+                    alert('실패!')
+                })
+        },
         formattingDate (date) {
             return moment(this.start_date).format('YYYY-MM-DD')
         }
