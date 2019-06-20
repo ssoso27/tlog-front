@@ -1,18 +1,24 @@
 <template>
 <div class="row col-12" style="padding: 5px">
   <div class="row col-12">
-      <!-- <img
-          src="https://s-ec.bstatic.com/images/hotel/max1024x768/989/98999751.jpg"
+      <img
+          :src="image_url"
           class="rounded border"
+          :class="{ 'd-none': image_url === '' }"
           alt="..."
-          style="width:200px; height:200px"> -->
+          style="width:200px; height:200px">
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
         </div>
         <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+          <input type="file"
+              @change="changeImage"
+              ref="memory_img"
+              class="custom-file-input"
+              id="inputGroupFile01"
+              aria-describedby="inputGroupFileAddon01">
           <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
         </div>
       </div>
@@ -34,7 +40,25 @@ export default {
         return {
             memory: {
                 'seq': this.seq,
+                'image': '',
                 'content': ''
+            },
+            image_url: ''
+        }
+    },
+    methods: {
+        changeImage (event) {
+            var input = event.target
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader()
+                reader.onload = e => {
+                    this.memory.image = this.$refs.memory_img.files[0]
+                    this.image_url = e.target.result
+                }
+                reader.readAsDataURL(input.files[0])
+            } else {
+                this.image_url = ''
             }
         }
     }

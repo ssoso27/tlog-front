@@ -3,7 +3,6 @@
     <form style="width:100%" @submit.prevent="submit">
       <div class="header"
           v-bind:style="{ 'background': 'url(' + image_url + ')' }" >
-          <!-- style="background: url(http://www.5viral.com/wp-content/uploads/2016/02/round-window-in-airplane.jpg);"> -->
           <div class="row justify-content-center">
             <label for="title" class="lab">제목</label>
             <input v-model="title" type="text" placeholder="여행기록명" class="title col-6"/>

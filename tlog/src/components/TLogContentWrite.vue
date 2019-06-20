@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-    <form style="width:100%" @submit="submit">
+    <form style="width:100%" @submit.prevent="submit">
         <div class="row mt-3 justify-content-center">
             <p class="h2 text-center col-12">{{ date }}</p>
         </div>
@@ -40,9 +40,12 @@ export default {
             this.input_places.push('input_place')
         },
         submit: function () {
-            var today = new Date(this.date).format('yyyy-MM-dd')
-            alert(today)
-            this.$router.push('/tlog/write/1/date/2019-03-02')
+            // var today = new Date(this.date).format('yyyy-MM-dd')
+            alert('submit')
+            // alert(today)
+            console.log(this.date)
+            console.log(this.places)
+            // this.$router.push('/tlog/write/1/date/2019-03-02')
         }
     }
 }
