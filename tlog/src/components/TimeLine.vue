@@ -1,82 +1,40 @@
 <template>
 <div class="container">
     <div>
-        <a href="/tlog" class="card list-group-item-action">
-            <div class="card-body">
-                <h5 class="card-title">주말동안 짧은 여행</h5>
-                <p class="card-text">
-                    <small class="text-muted">#주말</small>
-                    <small class="text-muted">#여름</small>
-                    <small class="text-muted">#기분전환</small>
-                </p>
-                <div class="clearfix mb-2">
-                    <img
-                        src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                        alt=""
-                        class="rounded-circle border float-left mr-2"
-                        style="width:50px; height:50px">
-                    <p class="card-text mb-0">헬로우</p>
-                    <p class="card-text" style="font-size: 12px"><span class="text-muted">2019.03.02</span></p>
-                </div>
-                <img
-                    src="https://s-ec.bstatic.com/images/hotel/max1024x768/989/98999751.jpg"
-                    class="rounded border mr-3"
-                    alt="..."
-                    style="width:200px; height:200px">
-                <img
-                    src="https://s-ec.bstatic.com/images/hotel/max1024x768/989/98999751.jpg"
-                    class="rounded border mr-3"
-                    alt="..."
-                    style="width:200px; height:200px">
-                <img
-                    src="https://s-ec.bstatic.com/images/hotel/max1024x768/989/98999751.jpg"
-                    class="rounded border mr-3"
-                    alt="..."
-                    style="width:200px; height:200px">
-            </div>
-        </a>
-
-        <a href="/tlog" class="card list-group-item-action">
-            <div class="card-body">
-                <h5 class="card-title">주말동안 짧은 여행</h5>
-                <p class="card-text">
-                    <small class="text-muted">#주말</small>
-                    <small class="text-muted">#여름</small>
-                    <small class="text-muted">#기분전환</small>
-                </p>
-                <div class="clearfix mb-2">
-                    <img
-                        src="https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-                        alt=""
-                        class="rounded-circle border float-left mr-2"
-                        style="width:50px; height:50px">
-                    <p class="card-text mb-0">헬로우</p>
-                    <p class="card-text" style="font-size: 12px"><span class="text-muted">2019.03.02</span></p>
-                </div>
-                <img
-                    src="https://s-ec.bstatic.com/images/hotel/max1024x768/989/98999751.jpg"
-                    class="rounded border mr-3"
-                    alt="..."
-                    style="width:200px; height:200px">
-                <img
-                    src="https://s-ec.bstatic.com/images/hotel/max1024x768/989/98999751.jpg"
-                    class="rounded border mr-3"
-                    alt="..."
-                    style="width:200px; height:200px">
-                <img
-                    src="https://s-ec.bstatic.com/images/hotel/max1024x768/989/98999751.jpg"
-                    class="rounded border mr-3"
-                    alt="..."
-                    style="width:200px; height:200px">
-            </div>
-        </a>
+        <tlog-card v-for="tlog in tlogs" v-bind:key="tlog.id" :tlog="tlog"></tlog-card>
     </div>
 </div>
 </template>
 
 <script>
 // eslint-disable-next-line
+import TLogCard from './TLogCard.vue'
+
 export default {
-    name: 'NewsFeed'
+    name: 'NewsFeed',
+    components: {
+        'tlog-card': TLogCard
+    },
+    data () {
+        return {
+            tlogs: []
+        }
+    },
+    created () {
+        this.refresh()
+    },
+    methods : {
+        refresh: function () {
+            this.$axios.get('/api/tlog')
+            .then((response) => {
+                // this.$router.push('/tlog/write/' + tlogRes.data + '/tdate/' + tdateRes.data)
+                this.tlogs = response.data
+                console.log(this.tlogs)
+            })
+            .catch(function () {
+                alert('타임라인 로드에 실패했습니다. 다시 시도해주세요.')
+            })
+        }
+    }
 }
 </script>
