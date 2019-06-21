@@ -3,20 +3,20 @@
     <section>
         <div class="row">
             <div class="header-container"
-                style="background: url(http://www.5viral.com/wp-content/uploads/2016/02/round-window-in-airplane.jpg);">
+                style="background-size: 1100px 300px;"
+                :style="{ 'background-image': 'url(//127.0.0.1:8080/' + tlog.imageUrl + ')' }">
                 <p class="header-title">
                     <span class="text-background">
-                        첫 여행기
+                        {{ tlog.title }}
                     </span>
                 </p>
                 <p class="header-period">
                     <span class="text-background">
-                        2019.04.03 ~ 2019.04.06
+                        {{ tlog.startDate }} ~ {{ tlog.lastDate }}
                     </span>
                 </p>
                 <p>
-                    <span class="header-hashtag text-background">#제주여행</span>
-                    <span class="header-hashtag text-background">#친구들과</span>
+                    <span v-for="hashtag in tlog.hashtags" :key="hashtag.id" class="header-hashtag text-background">{{ hashtag }} </span>
                 </p>
             </div>
         </div>
@@ -67,8 +67,8 @@ export default {
         getTLog: function () {
             this.$axios.get('/api/tlog/' + this.tlogId)
             .then((response) => {
-                this.tdate = response.data
-                console.log(this.tdate)
+                this.tlog = response.data
+                console.log(this.tlog)
             })
             .catch(function (err) {
                 alert('해당 날짜의 기록을 가져올 수 없습니다.')
