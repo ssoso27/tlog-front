@@ -2,7 +2,7 @@
 <div class="container">
     <form style="width:100%" @submit.prevent="submit">
         <div class="row mt-3 justify-content-center">
-            <p class="h2 text-center col-12">{{ date }}</p>
+            <p class="h2 text-center col-12">{{ tdate.date }}</p>
         </div>
         <component v-for="(input_place, idx) in input_places" :is="input_place" v-bind:key="input_place.id" v-model="places[idx]" :seq="idx"></component>
         <div class="row">
@@ -25,17 +25,29 @@ export default {
     },
     data () {
         return {
-            date: this.$route.params.date,
+            tlog_id: this.$route.params.tlogId,
+            tdate_id: this.$route.params.tdateId,
+            tdate: '',
             input_places: [],
             places: []
         }
     },
     created () {
-        this.date = this.$route.params.date
+        this.tlog_id = this.$route.params.tlogId
+        this.tdate_id = this.$route.params.tdateId
         this.input_places = []
         this.places = []
     },
     methods: {
+        getTdate: function () {
+            this.$axios.get('/api/tdate/' + this.tdate_id)
+            .then((response) => {
+                this.date = response.data
+            })
+            .catch(function () {
+                alert('해당 날짜의 기록을 가져올 수 없습니다.')
+            })
+        },
         addPlace: function (event) {
             this.input_places.push('input_place')
         },

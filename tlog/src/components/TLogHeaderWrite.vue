@@ -85,9 +85,17 @@ export default {
             if (this.image !== '') frm.append('backgroundImg', this.image)
 
             this.$axios.post('/api/tlog', frm, config)
-                .then((response) => {
+                .then((tlogRes) => {
                     // 응답 처리
-                    this.$router.push('/tlog/write/' + response.data + '/date/' + this.formattingDate(this.start_date))
+                    this.$axios.post('/api/tdate',
+                        {'date': this.formattingDate(this.start_date), 'tlogId': tlogRes.data}
+                    )
+                    .then((tdateRes) => {
+                        this.$router.push('/tlog/write/' + tlogRes.data + '/tdate/' + tdateRes.data)
+                    })
+                    .catch(function () {
+                        alert('여행기 작성에 실패했습니다. 다시 시도해주세요.')
+                    })
                 })
                 .catch(function () {
                     // 예외 처리
