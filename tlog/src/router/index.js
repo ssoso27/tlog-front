@@ -17,7 +17,7 @@ export default new VueRouter({
         { path: '/login', component: Login },
         { path: '/signup', component: SignUp },
         { path: '/mypage', component: MyPage },
-        { path: '/tlog/:id', component: TLogDetail },
+        { path: '/tlog/:id/detail', component: TLogDetail },
         { path: '/tlog/write', component: TLogHeaderWrite },
         { path: '/tlog/write/:tlogId/tdate/:tdateId', component: TLogContentWrite }
         // { path: '/:id', component: MyPage },

@@ -1,5 +1,5 @@
 <template>
-<a :href="'/tlog/' + tlog.id" class="card list-group-item-action">
+<a :href="'/tlog/' + tlog.id +'/detail'" class="card list-group-item-action">
   <div class="card-body">
       <h5 class="card-title">{{ tlog.title }}</h5>
       <p class="card-text">
