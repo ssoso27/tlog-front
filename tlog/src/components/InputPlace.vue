@@ -6,7 +6,7 @@
         <input v-model="place.name" v-on:input="$emit('input', place)" type="text" placeholder="여행장소명" class="name col-6"/>
         <button type="button" class="btn btn-success ml-2" @click="savePlace">장소 저장</button>
       </div>
-      <component v-for="(input_memory, idx) in input_memories" :is="input_memory" v-bind:key="input_memory.id" v-model="place.memories[idx]" :seq="idx"></component>
+      <component v-for="(input_memory, idx) in input_memories" :is="input_memory" v-bind:key="input_memory.id" :placeId="place.id" :seq="idx"></component>
       <div class="row">
         <button type="button" class="btn btn-info mt-2" v-on:click="addMemory">이 장소에서의 추억 추가</button>
       </div>
@@ -52,7 +52,6 @@ export default {
             this.$axios.put('/api/places', this.place)
                 .then((response) => {
                     this.place = response.data
-                    alert(this.place.name)
                 })
                 .catch(function () {
                     alert('장소를 저장할 수 없습니다.')
