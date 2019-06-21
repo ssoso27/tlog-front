@@ -52,7 +52,30 @@
 
 <script>
 export default {
-    name: 'TLogDetail'
+    name: 'TLogDetail',
+    data () {
+        return {
+            tlogId: this.$route.params.id,
+            tlog: '',
+            tdate: ''
+        }
+    },
+    created () {
+        this.getTLog()
+    },
+    methods: {
+        getTLog: function () {
+            this.$axios.get('/api/tlog/' + this.tlogId)
+            .then((response) => {
+                this.tdate = response.data
+                console.log(this.tdate)
+            })
+            .catch(function (err) {
+                alert('해당 날짜의 기록을 가져올 수 없습니다.')
+                console.log(err)
+            })
+        }
+    }
 }
 </script>
 
