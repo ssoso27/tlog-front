@@ -77,6 +77,27 @@
 <script>
 // eslint-disable-next-line
 export default {
-    name: 'NewsFeed'
+    name: 'NewsFeed',
+    data () {
+        return {
+            tlogs: []
+        }
+    },
+    created () {
+        this.refresh()
+    },
+    methods : {
+        refresh: function () {
+            this.$axios.get('/api/tlog')
+            .then((response) => {
+                // this.$router.push('/tlog/write/' + tlogRes.data + '/tdate/' + tdateRes.data)
+                this.tlogs = response.data
+                console.log(this.tlogs)
+            })
+            .catch(function () {
+                alert('타임라인 로드에 실패했습니다. 다시 시도해주세요.')
+            })
+        }
+    }
 }
 </script>

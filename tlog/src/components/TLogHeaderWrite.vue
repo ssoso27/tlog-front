@@ -2,7 +2,8 @@
   <div class="container">
     <form style="width:100%" @submit.prevent="submit">
       <div class="header"
-          v-bind:style="{ 'background': 'url(' + image_url + ')' }" >
+        style="background-size: 1100px 300px;"
+          v-bind:style="{ 'background-image': 'url(' + image_url + ')' }" >
           <div class="row justify-content-center">
             <label for="title" class="lab">제목</label>
             <input v-model="title" type="text" placeholder="여행기록명" class="title col-6"/>
