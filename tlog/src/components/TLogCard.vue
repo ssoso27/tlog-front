@@ -12,8 +12,8 @@
               alt=""
               class="rounded-circle border float-left mr-2"
               style="width:50px; height:50px">
-          <p class="card-text mb-0">헬로우</p>
-          <p class="card-text" style="font-size: 12px"><span class="text-muted">{{ tlog.dataCreated }}</span></p>
+          <p class="card-text mb-0">{{ tlog.account.nickname }}</p>
+          <p class="card-text" style="font-size: 12px"><span class="text-muted">{{ createdAt }}</span></p>
       </div>
       <img
           :src="image"
@@ -25,17 +25,21 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   props: ['tlog'],
   name: 'TLogCard',
   data () {
     return {
       tlog: this.tlog,
-      image: ''
+      image: '',
+      createdAt: ''
     }
   },
   created () {
     this.image = '//127.0.0.1:8080/' + this.tlog.backgroundImg
+    this.createdAt = this.formattingDate(this.tlog.dataCreated)
   },
   methods : {
     formattingDate (date) {
