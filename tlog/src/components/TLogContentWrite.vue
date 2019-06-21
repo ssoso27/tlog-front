@@ -8,7 +8,7 @@
         <button type="button" class="btn btn-primary mt-2" v-on:click="addPlace">다른 장소 추가</button>
     </div>
     <div class="row">
-        <button type="button" class="btn btn-outline-dark mt-2">다음 날짜</button>
+        <button type="button" class="btn btn-outline-dark mt-2" @click="goNewsfeed">완료</button>
     </div>
 </div>
 </template>
@@ -47,6 +47,9 @@ export default {
         },
         addPlace: function (event) {
             this.input_places.push('input_place')
+        },
+        goNewsfeed: function (evnet) {
+            this.$router.push('/newsfeed')
         }
     }
 }
