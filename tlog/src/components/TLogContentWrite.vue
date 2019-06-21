@@ -3,7 +3,7 @@
     <div class="row mt-3 justify-content-center">
         <p class="h2 text-center col-12">{{ tdate.date }}</p>
     </div>
-    <component v-for="(input_place, idx) in input_places" :is="input_place" v-bind:key="input_place.id" v-model="places[idx]" :seq="idx"></component>
+    <component v-for="(input_place, idx) in input_places" :is="input_place" v-bind:key="input_place.id" :seq="idx" :tdateId="tdate_id"></component>
     <div class="row">
         <button type="button" class="btn btn-primary mt-2" v-on:click="addPlace">다른 장소 추가</button>
     </div>
@@ -26,15 +26,13 @@ export default {
             tlog_id: this.$route.params.tlogId,
             tdate_id: this.$route.params.tdateId,
             tdate: '',
-            input_places: [],
-            places: []
+            input_places: []
         }
     },
     created () {
         this.tlog_id = this.$route.params.tlogId
         this.tdate_id = this.$route.params.tdateId
         this.input_places = []
-        this.places = []
         this.getTdate()
     },
     methods: {
